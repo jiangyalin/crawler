@@ -1,0 +1,10 @@
+{
+  "name": "crawler",
+  "version": "0.0.1",
+  "main": "server.js",
+  "author": "jiang",
+  "license": "MIT",
+  "dependencies": {
+
+  }
+}
