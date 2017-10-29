@@ -45,12 +45,12 @@ config.url.forEach(function (data, index) {
         console.log('title',title)
         const myPath = path.resolve('./files') + '\\' + title;
         // 生成日志文件
-        fs.writeFile('./files/' + title + '/imgs.text', imgs, 'utf-8', function(err) {
-          if (err) {
-            throw err;
-          }
-          console.log('日志文件生成成功');
-        });
+        // fs.writeFile('./files/' + title + '/imgs.text', imgs, 'utf-8', function(err) {
+        //   if (err) {
+        //     throw err;
+        //   }
+        //   console.log('日志文件生成成功');
+        // });
         console.log(imgs);
         let arr = [];
         // 纪录图片资源信息
@@ -96,8 +96,7 @@ config.url.forEach(function (data, index) {
       }
       done();
     }
-  };
+  }
   urls.push(url);
 });
-
 crawler.queue(urls);
