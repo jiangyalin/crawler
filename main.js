@@ -8,10 +8,10 @@ let crawler = new Crawler({
   encoding: null,
   rateLimit: 100000,
   maxConnections: 10,
-  // headers: {
-  //   'Accept-Language': 'zh-CN,zh;q=0.9',
-  //   Cookie: '_uuid=5F08EF93-4115-FA40-C18D-83A97F14467692912infoc; buvid3=D7E25953-0789-4120-99A7-292246B9C71A190964infoc; LIVE_BUVID=AUTO3515698207959543; sid=9jejgwb1; DedeUserID=4694517; DedeUserID__ckMd5=5ccb4ac918cd16d3; SESSDATA=9a913e58%2C1572412805%2Ce1885791; bili_jct=14acea1afec7b175b4f5432a46f2d2d4; bp_t_offset_4694517=304832537879987642; CURRENT_FNVAL=16; msource=pc_web; deviceFingerprint=a1e7c047753c27f31e9ce609b25b0a98; from=pc'
-  // },
+  headers: {
+    'Accept-Language': 'zh-CN,zh;q=0.9',
+    Cookie: '_uuid=5F08EF93-4115-FA40-C18D-83A97F14467692912infoc; buvid3=D7E25953-0789-4120-99A7-292246B9C71A190964infoc; LIVE_BUVID=AUTO3515698207959543; sid=9jejgwb1; DedeUserID=4694517; DedeUserID__ckMd5=5ccb4ac918cd16d3; SESSDATA=9a913e58%2C1572412805%2Ce1885791; bili_jct=14acea1afec7b175b4f5432a46f2d2d4; bp_t_offset_4694517=304832537879987642; CURRENT_FNVAL=16; msource=pc_web; deviceFingerprint=a1e7c047753c27f31e9ce609b25b0a98; from=pc'
+  },
   callback: (err, res, done) => {
     console.log('done', done)
     console.log('res', res.body)
