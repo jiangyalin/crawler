@@ -14,8 +14,12 @@ async function example() {
     const btn = await driver.findElement(By.css('#app #app_child_frame .left_sidebar .left_sidebar_btn')).click()
     await driver.findElement(By.css('#app #app_child_frame .left_sidebar .left_sidebar_dialog .frame #tab-web')).click()
     await driver.findElement(By.css('#app #app_child_frame .left_sidebar .left_sidebar_dialog .frame .el-tabs__content #pane-web #pages_manege div:nth-of-type(2)')).click()
-    await driver.navigate().to("http://localhost:8080")
-    await driver.get(url)
+    const windowHandles = await driver.getAllWindowHandles()
+    await driver.switchTo().frame(await driver.findElement(By.id("mce_0_ifr")))
+    console.log('windowHandles', windowHandles)
+    // await driver.switchTo().window(windowHandles[0])
+    // await driver.navigate().to("http://localhost:8080")
+    // await driver.get(url)
     // driver.switchTo().defaultContent();
 
 //     切换到某个frame：
