@@ -13,9 +13,16 @@ async function example() {
   const driver = new Builder().forBrowser('chrome').setChromeOptions().build() // 无头浏览器
   try {
     await driver.get(url)
-    const name = await driver.findElement(By.css('#app .login .login-container .el-form .el-form-item:nth-of-type(1) .el-input__inner')).sendKeys('yfbcsniya3')
-    const pwd = await driver.findElement(By.css('#app .login .login-container .el-form .el-form-item:nth-of-type(2) .el-input__inner')).sendKeys('zhendao123@123')
+    await driver.findElement(By.css('#app .login .login-container .el-form .el-form-item:nth-of-type(1) .el-input__inner')).sendKeys('yfbcsniya3')
+    await driver.findElement(By.css('#app .login .login-container .el-form .el-form-item:nth-of-type(2) .el-input__inner')).sendKeys('zhendao123@123')
     const btn = await driver.findElement(By.css('#app .login .login-container .el-form .el-form-item:nth-of-type(3) button'))
+    console.log('aaa')
+    await driver.sendDevToolsCommand('Emulation.setDeviceMetricsOverride', {
+        mobile: true,
+        width: 412,
+        height: 732,
+        deviceScaleFactor: 2.625
+    })
     console.log('btn', await btn.getAttribute('type'))
     await btn.click()
     const fileName = path.join(__dirname, './save/aaa.jpg')
