@@ -1,32 +1,33 @@
 const {Builder, By, Key, until} = require('selenium-webdriver')
 const {Options} = require('selenium-webdriver/chrome')
-const path = require('chromedriver').path
+const _path = require('chromedriver').path
+const path = require('path')
+const fs = require('fs')
 
 console.log('Options', Options)
-console.log('path', path)
-// const url = 'http://192.168.40.252/prd/T%E4%BA%91%E5%86%9C%E5%95%86%E7%89%88/T%E4%BA%91%E5%86%9C%E5%95%86%E7%89%88_v1.0_Bubbles/#g=1&p=%E7%94%B5%E5%95%86%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%EF%BC%88done%EF%BC%89'
+console.log('_path', _path)
 const url = 'http://preconsole.71360.com/home/index'
 async function example() {
-  let driver = new Builder().forBrowser('chrome').build();
+  const driver = new Builder().forBrowser('chrome').build()
   try {
     await driver.get(url)
-    // const a = await driver.findElement(By.id('app')).getText()
-    // console.log('aa', a)
     const name = await driver.findElement(By.css('#app .login .login-container .el-form .el-form-item:nth-of-type(1) .el-input__inner')).sendKeys('yfbcsniya3')
     const pwd = await driver.findElement(By.css('#app .login .login-container .el-form .el-form-item:nth-of-type(2) .el-input__inner')).sendKeys('zhendao123@123')
-    const btn = await driver.findElement(By.css('#app .login .login-container .el-form .el-form-item:nth-of-type(3) button')).click()
+    const btn = await driver.findElement(By.css('#app .login .login-container .el-form .el-form-item:nth-of-type(3) button')).getAttribute('type')
+    const js = 'const demo = document.getElementById(\'app\')\n' +
+      '    console.log(\'demo\', demo)\n' +
+      '    return demo'
+
+    const res = await driver.executeScript(js)
+
+    console.log('res', res)
+
     console.log('btn', btn)
+    const fileName = path.join(__dirname, './save/aaa.jpg')
+    fs.writeFileSync(fileName, await driver.takeScreenshot(), 'base64')
   } finally {
-    // driver.quit()
+    driver.quit()
   }
-  // console.log('findElement', driver.findElement(By.id('start-of-content')).getId())
-  // try {
-  //   driver.get('http://www.github.com');
-  //   driver.findElement(By.name('q')).sendKeys('webdriver', Key.RETURN);
-  //   driver.wait(until.titleIs('webdriver - Google Search'), 1000);
-  // } finally {
-  //   driver.quit();
-  // }
 }
 
 example()
